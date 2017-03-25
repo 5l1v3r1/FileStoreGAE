@@ -173,7 +173,7 @@ def get_thumbnail(key):
 
 
 @app.route('/thumbnail/<key>/<filename>', methods=['GET'])
-def thumbnail(key):
+def thumbnail(key,filename):
     if request.if_modified_since:
         return "HTTP_304_NOT_MODIFIED", 304
     memcache_key = 'thumbnail_{}'.format(key)
