@@ -138,7 +138,7 @@ def get_download(key):
     doc = ndb.Key(urlsafe=key).get()
     return send_file(io.BytesIO(doc.file),
                      mimetype=doc.mime_type,
-                     as_attachment=True,
+                     as_attachment=False,
                      attachment_filename=doc.filename.encode('utf-8'),
                      add_etags=True,
                      cache_timeout=86400 * 365,
@@ -164,7 +164,7 @@ def get_thumbnail(key):
     thumbnail.resize(width=200)
     return send_file(io.BytesIO(thumbnail.execute_transforms(output_encoding=images.JPEG, quality=50)),
                      mimetype='image/jpeg',
-                     as_attachment=True,
+                     as_attachment=False,
                      attachment_filename="thumbnail_{}".format(doc.filename.encode('utf-8')),
                      add_etags=True,
                      cache_timeout=86400 * 365,
