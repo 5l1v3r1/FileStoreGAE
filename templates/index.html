@@ -43,11 +43,11 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-item">
                     <div class="thumbnail"><img src="
                             {% if doc.is_image() %}
-                                {{ url_for('thumbnail', key=doc.key.urlsafe()) }}
+                                {{ url_for('thumbnail', key=doc.key.urlsafe(), filename = doc.filename) }}
                             {% else %}
                                 {{ doc.mime_type | mime2img }}
                             {% endif %}"
-                                                alt="Thumbnail Image 1" class="img-responsive img-rounded">
+                                                alt="Thumbnail Image" class="img-responsive img-rounded">
                         <div class="caption">
                             <h4>{{ doc.filename }}</h4>
                             <p>{{ doc.description }}</p>

@@ -138,7 +138,7 @@ def get_download(key):
     doc = ndb.Key(urlsafe=key).get()
     return send_file(io.BytesIO(doc.file),
                      mimetype=doc.mime_type,
-                     as_attachment=False,
+                     as_attachment=True,
                      attachment_filename=doc.filename.encode('utf-8'),
                      add_etags=True,
                      cache_timeout=86400 * 365,
@@ -172,7 +172,7 @@ def get_thumbnail(key):
                      last_modified=doc.created)
 
 
-@app.route('/thumbnail/<key>/', methods=['GET'])
+@app.route('/thumbnail/<key>/<filename>', methods=['GET'])
 def thumbnail(key):
     if request.if_modified_since:
         return "HTTP_304_NOT_MODIFIED", 304
