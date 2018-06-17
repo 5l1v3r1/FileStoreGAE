@@ -1,5 +1,5 @@
 # File Store on GAE
-
+![Powered by Google App Engine](https://cloud.google.com/appengine/images/appengine-noborder-120x30.gif)
 ### 用途
 
 * 适合低负载的个人Blog的图床/网盘。
